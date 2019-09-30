@@ -1,0 +1,21 @@
+
+.login-box {
+    width: 380px;
+    height: 320px;
+    display: grid;
+    grid-template-rows: repeat(3, 33.3%);
+    place-items: center;
+    border: 1px solid black;
+}
+
+.login-box img {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+
+}
+.login-box input {
+    outline: none;
+    border: none;
+}
+
