@@ -5,17 +5,35 @@
     display: grid;
     grid-template-rows: repeat(3, 33.3%);
     place-items: center;
-    border: 1px solid black;
+    float: right;
+    margin-right: 200px;
+    margin-top: 150px;
 }
 
-.login-box img {
-    width: 40px;
-    height: 40px;
-    display: inline-block;
+.login-box div {
+    width: 300px;
+    /* height: 18px; */
+    border-radius: 5px;
+    border: 1px solid rgb(217, 217, 217);
+    padding: 8px;
+}
 
+.login-box div:hover{
+    border-color: rgb(64, 169, 255);
+}
+
+
+
+i.anticon.anticon-user, i.anticon.anticon-lock {
+    margin: 0px 6px;
 }
 .login-box input {
     outline: none;
     border: none;
+    font-family: 'microsoft yahei', Times, serif;
+    font-size: 16px;
+    vertical-align: text-top;
+    padding: 0px;
+    width: 260px;
 }
 
