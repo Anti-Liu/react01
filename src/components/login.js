@@ -8,20 +8,27 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            emptyName: false,
-            emptyPsw: false,
             errInfo: false
         }
     }
 
     onInputChange = (e) => {
-        const flag = e.target.value ? false : true
+        const flag = e.target.value !== '' ? false : true
         if(e.target.placeholder === 'Username') {
             this.setState({username: e.target.value, emptyName: flag});
+
         }
         if(e.target.placeholder === 'Password') {
             this.setState({password: e.target.value, emptyPsw: flag});
         }
+        console.log(flag, this.state);
+        
+        // if(flag) {
+        //     e.target.parentNode.style['border-color'] = 'rgb(245,34,45)';
+        //     e.target.parentNode.style['box-shadow'] = 'none';
+        //     console.log(e.target.parentNode);
+            
+        // }
     }
 
     login = (e) => {
@@ -42,14 +49,12 @@ class Login extends React.Component {
                 placeholder='Username' 
                 iconType='user' 
                 inputType='text' 
-                empty={this.state.emptyName} 
                 onChange={this.onInputChange}
             />
             <UserInput 
                 placeholder='Password' 
                 iconType='lock' 
                 inputType='password'
-                empty={this.state.emptyPsw} 
                 onChange={this.onInputChange}
             />
             <div className='item3'>
