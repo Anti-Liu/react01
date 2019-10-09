@@ -3,31 +3,36 @@
     width: 380px;
     height: 320px;
     display: grid;
-    grid-template-rows: repeat(3, 33.3%);
+    grid-template-rows: repeat(25%,);
     place-items: center;
     float: right;
     margin-right: 200px;
     margin-top: 150px;
+    
 }
 
-.login-box div {
+#inputDiv {
     width: 300px;
-    /* height: 18px; */
     border-radius: 5px;
     border: 1px solid rgb(217, 217, 217);
     padding: 8px;
 }
 
-.login-box div:hover{
-    border-color: rgb(64, 169, 255);
+#inputDiv:hover{
+    border-color: rgb(64, 169, 255)!important;
 }
 
+.login-box .item3 {
+    border: none;
+    padding: 0px;
+    width: 318px;
+}
 
 
 i.anticon.anticon-user, i.anticon.anticon-lock {
     margin: 0px 6px;
 }
-.login-box input {
+.login-box .infoInput {
     outline: none;
     border: none;
     font-family: 'microsoft yahei', Times, serif;
@@ -35,5 +40,103 @@ i.anticon.anticon-user, i.anticon.anticon-lock {
     vertical-align: text-top;
     padding: 0px;
     width: 260px;
+}
+.login-box p {
+    position: relative;
+    height: 20px;
+}
+
+.login-box p span {
+    display: inline-block;
+    margin-left: 25px;
+    margin-right: 70px;
+}
+.msg {
+    display: none;
+}
+.showMsg {
+    color: rgb(245,34,45);
+    margin-top: 3px;
+    display: inline-block;
+    position: absolute;
+    transition: transform .3 ease-in,top .3s ease-in;
+}
+p .check {
+    position: absolute;
+    display: none;
+}
+
+p .check + label:before {
+    cursor: pointer;
+    position:absolute;
+    display: inline-block;
+    width:16px;
+    height:16px;
+    margin-top: 2px;
+    content:'';
+    border:1px solid #c0c0c0;
+    border-radius:3px;
+}
+
+p label:hover:before {
+    border-color: rgb(64, 169, 255);
+}
+
+p .check:checked + label:before {
+    background-color: rgb(64, 169, 255);
+    border-color: rgb(64, 169, 255);
+    animation: checkboxEffect 0.36s ease-in-out;
+    animation-fill-mode: backwards;
+}
+
+p .check+label:after { /*这个是选中之后的√，先设置为隐藏，等选中后在将这些属性显示出来*/
+    position: absolute;/*定位元素，调整在复选框的位置*/
+    top: 6px;
+    left: 3px;
+    display: none;/*先将它隐藏，等点击之后在放出来*/
+    width: 12px;/*设置√的高度，就是√的右半部分*/
+    height: 6px;/*设置√的高度，就是√的左半部分*/
+    content: '';/*必设属性，不设不生效*/
+    border-bottom: 2px solid white;/*设置√的颜色*/
+    border-left: 2px solid white;/*设置√的颜色*/
+    box-sizing: border-box;/*宽和高只有12*6，设置的下边框和左边框不会撑大宽和高*/
+    transform: rotate(-46deg);/*旋转成一个√√*/
+  }
+
+p .check:checked + label:after {
+    display: inline-block;
+   
+}
+
+.login-box button {
+    width: 318px;
+    height: 40px;
+    background-color: rgb(64, 169, 255);
+    border: none;
+    border-radius: 5px;
+    font-family: 'microsoft yahei', Times, serif;
+    font-size: 16px;
+    color: aliceblue;
+}
+a {
+    color: rgb(98,144,255);
+    text-align: center;
+    text-decoration: none;
+ }
+
+.btn-checkbox {
+    position: absolute;
+    display: none;
+}
+
+@keyframes checkboxEffect {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1.3);
+        opacity: 0;
+    }
 }
 
