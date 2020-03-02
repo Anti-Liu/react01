@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  operatorsAliases: false,
   pool: {
     max: 5,
     min: 0,
@@ -13,4 +12,20 @@ const sequelize = new Sequelize({
   storage: 'database.sqlite',
 });
 
-module.exports = sequelize;
+const User = sequelize.define('User', {
+  username: {
+    type: Sequelize.STRING,
+    primaryKey: true,
+  },
+  password: Sequelize.STRING,
+
+});
+sequelize
+  .sync()
+  .then(() => {
+    console.log('init db ok')
+  })
+  .catch(err => {
+    console.log('init db error', err)
+  })
+exports.User = User;
