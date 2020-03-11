@@ -1,19 +1,35 @@
 const express = require('express');
 
-const {User} = require('./sequelize');
+const { User } = require('./sequelize');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req,res,next)=>{
-  return res.json({msg :'OK'});
+app.get('/', (req, res, next) => {
+  return res.json({ msg: 'OK' });
 })
 
-app.post('/login', (req, res, next) => {
+app.post('/users', async (req, res, next) => {
   const { username, password } = req.body
-  
-  return User.findAll({ where: { username, password } })
-    .then(() => { res.json({ status: 'success' }) }, (err) => { res.json({ error: err }) })
+
+  return User.create({ username, password })
+    .then((data) => {
+      return res.json({ data });
+    }).catch((error) => {
+      return res.json({ error });
+    });
+
+});
+
+app.post('/login', async (req, res, next) => {
+  const { username, password } = req.body
+  return User.findOne({ where: { username, password } })
+    .then((data) => {
+      return res.json({ data: 'success' });
+    }).catch((error) => {
+      return res.json({ error });
+    });
+
 });
 
 app.listen(3001);
